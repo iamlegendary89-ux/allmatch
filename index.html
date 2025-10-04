@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphone Matcher Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Find Your Perfect Smartphone</h1>
+        <p>Answer 10 quick questions about your priorities, and get matched with the best 2025 phones for free!</p>
+        
+        <div id="quiz">
+            <!-- Questions will be dynamically added here -->
+        </div>
+        
+        <button id="nextBtn" onclick="nextQuestion()">Next</button>
+        <button id="submitBtn" onclick="submitQuiz()" style="display: none;">Get Recommendations</button>
+        
+        <div id="results" style="display: none;">
+            <h2>Your Top Matches</h2>
+            <div id="recommendations"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
