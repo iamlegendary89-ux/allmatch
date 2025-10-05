@@ -10,8 +10,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1.6; /* Improved readability */
-    font-size: 16px; /* Minimum body size for readability */
+    line-height: 1.6;
+    font-size: 16px;
 }
 
 #background {
@@ -42,19 +42,26 @@ body {
     z-index: 1;
     overflow-y: auto;
     max-height: 90vh;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
 }
 
 h1 {
-    text-align: center;
     color: #fff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    font-size: 1.8em;
+    font-size: 2em;
     margin: 10px 0;
     line-height: 1.2;
 }
 
+.highlight {
+    color: #0ea5e9;
+}
+
 h2 {
-    text-align: center;
     color: #fff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     font-size: 1.5em;
@@ -63,10 +70,31 @@ h2 {
 }
 
 p {
-    text-align: center;
     color: #eee;
     font-size: 1em;
     line-height: 1.6;
+}
+
+.progress-bar {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    height: 8px;
+    margin-bottom: 10px;
+}
+
+#progress-fill {
+    height: 100%;
+    background: #0ea5e9;
+    width: 0;
+    transition: width 0.5s ease-out;
+    border-radius: 5px;
+}
+
+#question-count, #contention-count, #considered-count {
+    font-size: 0.9em;
+    color: #ddd;
+    margin: 5px 0;
 }
 
 .question {
@@ -91,8 +119,8 @@ label {
     font-size: 1em;
     word-break: break-word;
     hyphens: auto;
-    line-height: 1.5; /* Better spacing for options */
-    color: #222; /* Higher contrast for text */
+    line-height: 1.5;
+    color: #222;
 }
 
 label:hover {
@@ -108,8 +136,8 @@ button {
     display: block;
     width: 100%;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.3);
-    color: #000;
+    background: #0ea5e9;
+    color: #fff;
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -121,7 +149,29 @@ button {
 }
 
 button:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: #0c8cd1;
+}
+
+#previousBtn {
+    width: auto;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    margin-top: 10px;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .results-grid {
@@ -179,7 +229,7 @@ button:hover {
 @media (max-width: 768px) {
     body {
         padding: 5px;
-        font-size: 15px; /* Slight adjustment for mobile readability */
+        font-size: 15px;
     }
 
     .container {
