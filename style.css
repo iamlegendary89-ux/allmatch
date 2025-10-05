@@ -1,3 +1,4 @@
+/* style.css (adjusted for longer option text: reduced font size on mobile, added word-wrap) */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #f4f4f4;
@@ -84,6 +85,8 @@ label {
     cursor: pointer;
     transition: background 0.3s;
     font-size: 1em;
+    word-break: break-word; /* Adjusted for longer text */
+    hyphens: auto;
 }
 
 label:hover {
@@ -189,7 +192,7 @@ button:hover {
 
     label {
         padding: 10px;
-        font-size: 0.95em;
+        font-size: 0.9em; /* Reduced for longer text on mobile */
     }
 
     button {
