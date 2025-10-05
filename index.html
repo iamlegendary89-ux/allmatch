@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="background"></div>
     <div class="container">
         <h1>Find Your Perfect Smartphone</h1>
         <p>Answer 10 quick questions about your priorities, and get matched with the best 2025 phones for free!</p>
@@ -15,12 +16,11 @@
             <!-- Questions will be dynamically added here -->
         </div>
         
-        <button id="nextBtn" onclick="nextQuestion()">Next</button>
         <button id="submitBtn" onclick="submitQuiz()" style="display: none;">Get Recommendations</button>
         
         <div id="results" style="display: none;">
             <h2>Your Top Matches</h2>
-            <div id="recommendations"></div>
+            <div id="recommendations" class="results-grid"></div>
         </div>
     </div>
     
