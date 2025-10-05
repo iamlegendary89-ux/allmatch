@@ -3,24 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smartphone Matcher Quiz</title>
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/google/material-design-icons/master/png/device/smartphone/materialicons/192dp/2x/baseline_smartphone_black_192dp.png">
+    <title>SmartMatch Pro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="background"></div>
     <div class="container">
-        <h1>Find Your Perfect Smartphone</h1>
-        <p>Answer 10 quick questions about your priorities, and get matched with the best 2025 phones for free!</p>
-        
-        <div id="quiz">
-            <!-- Questions will be dynamically added here -->
+        <header>
+            <h1>SmartMatch <span class="highlight">Pro</span></h1>
+            <p>Your personal smartphone guide.</p>
+        </header>
+        <div id="welcome" style="display: block;">
+            <button onclick="startQuiz('basic')">Quick Quiz (5 Questions)</button>
+            <button onclick="startQuiz('advanced')">Detailed Quiz (10 Questions)</button>
         </div>
-        
-        <button id="submitBtn" onclick="submitQuiz()" style="display: none;">Get Recommendations</button>
-        
+        <div id="quiz-container" style="display: none;">
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+            <p id="question-count"></p>
+            <p id="contention-count"></p>
+            <div id="quiz"></div>
+            <button id="previousBtn" onclick="previousQuestion()" style="display: none;">Previous</button>
+            <button id="submitBtn" onclick="submitQuiz()" style="display: none;">Get Recommendations</button>
+        </div>
+        <div id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing your answers...</p>
+        </div>
         <div id="results" style="display: none;">
             <h2>Your Top Matches</h2>
+            <p id="considered-count"></p>
             <div id="recommendations" class="results-grid"></div>
+            <button onclick="restartQuiz()">Restart</button>
         </div>
     </div>
     
