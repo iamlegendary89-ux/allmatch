@@ -1,0 +1,12 @@
+{
+    "name": "smartmatch-pro",
+    "version": "1.0.0",
+    "description": "A PWA to recommend smartphones based on user preferences",
+    "main": "script.js",
+    "scripts": {
+        "start": "npx serve .",
+        "build": "echo 'Static site, no build required' && exit 0"
+    },
+    "author": "",
+    "license": "MIT"
+}
