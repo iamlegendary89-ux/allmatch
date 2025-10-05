@@ -1,64 +1,232 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    z-index: -1;
+    opacity: 0.8;
+    transition: background-image 1s ease-in-out;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
+    width: 90%;
     margin: auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
+    max-height: 90vh;
 }
 
-h1, h2 {
+h1 {
     text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1.5em;
+    margin: 15px 0;
+}
+
+p {
+    text-align: center;
+    color: #eee;
+    font-size: 1em;
 }
 
 .question {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.question.fade-out {
+    opacity: 0;
 }
 
 label {
-    display: block;
-    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1em;
+}
+
+label:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
 }
 
 button {
     display: block;
     width: 100%;
-    padding: 10px;
-    background: #007bff;
-    color: white;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background 0.3s;
+    font-size: 1em;
 }
 
 button:hover {
-    background: #0056b3;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 15px;
+    align-items: start;
 }
 
 .rec {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    overflow: hidden; /* Clear floats */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
 }
 
 .rec img {
-    float: left;
-    width: 100px;
+    width: 100%;
+    max-width: 120px;
     height: auto;
-    margin-right: 10px;
-    border-radius: 5px;
+    border-radius: 12px;
+    margin-bottom: 8px;
 }
 
 .rec h3 {
-    margin: 0 0 5px;
+    margin: 8px 0;
+    font-size: 1.1em;
+}
+
+.rec p {
+    font-size: 0.9em;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.rec a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin: 5px;
+    display: inline-block;
+}
+
+.rec.top {
+    grid-column: 2;
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 15px;
+        max-height: none;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    label {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .rec.top {
+        transform: none;
+        grid-column: auto;
+    }
+
+    .rec img {
+        max-width: 100px;
+    }
+
+    .rec h3 {
+        font-size: 1em;
+    }
+
+    .rec p, .rec a {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    input[type="radio"] {
+        transform: scale(1.1);
+    }
+
+    label {
+        flex-direction: row;
+        align-items: center;
+    }
 }
