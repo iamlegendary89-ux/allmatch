@@ -19,11 +19,5 @@
             "src": "/(.*)",
             "dest": "index.html"
         }
-    ],
-    "cron": [
-        {
-            "path": "/triggerUpdate",
-            "schedule": "0 0 * * *"
-        }
     ]
 }

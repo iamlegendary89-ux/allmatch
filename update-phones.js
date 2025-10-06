@@ -344,6 +344,9 @@ async function main(mode = 'daily') {
 
 const app = express();
 app.get('/triggerUpdate', async (req, res) => {
+    if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
     const today = new Date().toDateString();
     if (lastUpdate === today) {
         res.json({ status: 'skipped' });
