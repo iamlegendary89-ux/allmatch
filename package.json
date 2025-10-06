@@ -1,0 +1,18 @@
+{
+    "name": "smartphone-data-updater",
+    "version": "2.0.0",
+    "description": "Smartphone quiz app with daily scraper",
+    "main": "update-phones.js",
+    "scripts": {
+        "start": "node update-phones.js",
+        "schedule": "node schedule-updates.js"
+    },
+    "dependencies": {
+        "axios": "^1.7.2",
+        "cheerio": "^1.0.0",
+        "express": "^4.18.2",
+        "node-cron": "^3.0.3"
+    },
+    "author": "",
+    "license": "MIT"
+}

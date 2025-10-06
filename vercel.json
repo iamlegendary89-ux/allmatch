@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "update-phones.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "index.html",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/triggerUpdate",
+            "dest": "update-phones.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "index.html"
+        }
+    ],
+    "cron": [
+        {
+            "path": "/triggerUpdate",
+            "schedule": "0 0 * * *"
+        }
+    ]
+}
