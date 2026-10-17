@@ -1,0 +1,47 @@
+name: Mastra Disposable Main SHA Attestation
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Main Node test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+
+  record-disposable-deployment:
+    name: Record disposable SHA
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: mastra-factory-disposable
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and attest actual GitHub main commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$GITHUB_SHA"
+          test "$GITHUB_REF" = "refs/heads/main"
+          printf '{"kind":"DISPOSABLE_GITHUB_ENVIRONMENT_RECORD_ONLY","sha":"%s","environment":"mastra-factory-disposable","repository":"%s"}\n' "$actual" "$GITHUB_REPOSITORY" > disposable-main-attestation.json
+          cat disposable-main-attestation.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mastra-disposable-main-attestation
+          path: disposable-main-attestation.json
+          if-no-files-found: error
